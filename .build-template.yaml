@@ -1,0 +1,11 @@
+template: templates/loz-script-project.yaml
+overrides:
+  artifacts:
+    - type: script
+      version: 1.9.0
+      registry: ghcr.io
+      build_script:
+        repo_name: linux-on-ibm-z-scripts
+        docker_required: true
+        path: src/build.sh
+        docker_image: dind:s390x
