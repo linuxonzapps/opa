@@ -22,7 +22,7 @@ export PATH=$PATH:/usr/local/go/bin
 # Ensure custom Go path is accounted for
 GO_VERSION=`awk -F'[=" ]+' '$1=="GO_VERSION"{print $2; exit}' /tmp/linux-on-ibm-z-scripts/OPA/${version}/build_opa.sh`
 export PATH=$PATH:/usr/local/go-${GO_VERSION}/bin
-cd opa/ && make DOCKER_FLAGS="--policy reset=true" image-s390x
+cd opa/ && rm -f Dockerfile.rego && make image-s390x
 docker save -o opa-${version}-linux-s390x.container.tar openpolicyagent/opa
 mv opa-${version}-linux-s390x.container.tar ../ && cd ../
 exit 0
